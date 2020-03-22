@@ -5,4 +5,5 @@ ext {
     openjfxVersion = '11.0.2'
     rxkotlinVersion = '2.4.0'
     rxkotlinfxVersion = '2.2.2'
+    asmVersion = '7.3.1'
 }

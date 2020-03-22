@@ -6,6 +6,7 @@ import io.reactivex.subjects.BehaviorSubject
 import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Pos
+import javafx.scene.control.Alert
 import javafx.scene.control.TextField
 import javafx.stage.FileChooser
 import tornadofx.*
@@ -55,7 +56,9 @@ class NewDeobProjectView : View("New Project") {
                         onNext = {
                             text = it.absolutePath
                             model.sourceJar.value = it
-                        }
+                        },
+
+                        onError =  { alert(Alert.AlertType.ERROR, "OH SNAP!", it.message ?: "") }
                     )
                 }
 

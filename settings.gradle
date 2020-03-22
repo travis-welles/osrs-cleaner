@@ -1,3 +1,4 @@
 rootProject.name = 'osrscleaner'
 
 include ':app'
+include ':asm'

@@ -5,6 +5,8 @@ plugins {
 apply plugin: 'application'
 
 dependencies {
+    implementation project(':asm')
+
     implementation "no.tornado:tornadofx:$tornadofxVersion"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlinVersion"
     implementation "com.github.thomasnield:rxkotlinfx:$rxkotlinfxVersion"
