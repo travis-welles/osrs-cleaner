@@ -16,6 +16,8 @@ import kotlin.system.exitProcess
  */
 class RootView : View() {
 
+    private val randomProjectWord = arrayOf("Deob", "Remap").random()
+
     /**
      * The root content view
      */
@@ -31,6 +33,7 @@ class RootView : View() {
                     item("New Deob Project")
                     item("New Remap Project")
                     item("Open Project")
+                    item("Project Settings") { isDisable = true }
                     item("Close Project") { isDisable = true }
                     separator()
                     item("Save Project") { isDisable = true }
@@ -47,7 +50,7 @@ class RootView : View() {
                     font = Font(16.0)
                 }
 
-                label("File > New Project") {
+                label("File > New $randomProjectWord Project") {
                     font = Font(12.0)
                 }
             }
