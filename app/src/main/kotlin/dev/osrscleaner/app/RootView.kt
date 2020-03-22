@@ -1,5 +1,7 @@
 package dev.osrscleaner.app
 
+import com.github.thomasnield.rxkotlinfx.actionEvents
+import dev.osrscleaner.app.dialog.NewDeobProjectView
 import javafx.geometry.Pos
 import javafx.scene.layout.BorderPane
 import javafx.scene.text.Font
@@ -19,9 +21,19 @@ class RootView : View() {
     private val randomProjectWord = arrayOf("Deob", "Remap").random()
 
     /**
+     * The root controller
+     */
+    private val controller: RootController by inject()
+
+    /**
      * The root content view
      */
     override val root = BorderPane()
+
+    /**
+     * Injected child views
+     */
+    private val newDeobProjectView: NewDeobProjectView by inject()
 
     init {
         title = "OSRS Cleaner"
@@ -30,8 +42,10 @@ class RootView : View() {
             setPrefSize(1200.0, 900.0)
             top = menubar {
                 menu("File") {
-                    item("New Deob Project")
-                    item("New Remap Project")
+                    menu("New Project") {
+                        item("New Deob Project").apply { actionEvents().map { Unit }.subscribe(controller.newDeobProject) }
+                        item("New Remap Project")
+                    }
                     item("Open Project")
                     item("Project Settings") { isDisable = true }
                     item("Close Project") { isDisable = true }
@@ -54,6 +68,13 @@ class RootView : View() {
                     font = Font(12.0)
                 }
             }
+        }
+
+        /**
+         * New Deob Project Subscriber
+         */
+        controller.newDeobProject.subscribe {
+            newDeobProjectView.openModal()
         }
     }
 }
