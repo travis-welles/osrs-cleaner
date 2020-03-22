@@ -1,0 +1,4 @@
+ext {
+    kotlinVersion = '1.3.61'
+    tinylogVersion = '2.0.1'
+}
