@@ -1,0 +1,23 @@
+plugins {
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+apply plugin: 'application'
+
+dependencies {
+    implementation "no.tornado:tornadofx:$tornadofxVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlinVersion"
+    implementation "com.github.thomasnield:rxkotlinfx:$rxkotlinfxVersion"
+}
+
+mainClassName = "dev.osrscleaner.app.Main"
+
+run {
+    description = "Run the application"
+    workingDir = rootProject.projectDir
+}
+
+javafx {
+    version = "11"
+    modules = [ 'javafx.controls', 'javafx.base', 'javafx.fxml' ]
+}
