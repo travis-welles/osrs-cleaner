@@ -39,7 +39,7 @@ class RootView : View() {
         title = "OSRS Cleaner"
 
         with(root) {
-            setPrefSize(1200.0, 900.0)
+            setPrefSize(1400.0, 900.0)
             top = menubar {
                 menu("File") {
                     menu("New Project") {

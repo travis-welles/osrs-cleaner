@@ -1,5 +1,6 @@
 package dev.osrscleaner.app
 
+import dev.osrscleaner.asm.ClassGroup
 import org.tinylog.kotlin.Logger
 import tornadofx.launch
 
@@ -12,6 +13,11 @@ import tornadofx.launch
  * The main static object
  */
 object Main {
+
+    /**
+     * The currently opened project.
+     */
+    lateinit var loadedProject: ProjectModel
 
     /**
      * Main method

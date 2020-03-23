@@ -1,6 +1,5 @@
 package dev.osrscleaner.app
 
-import dev.osrscleaner.app.util.ProgressTaskWindow
 import javafx.scene.image.Image
 import tornadofx.App
 import tornadofx.setStageIcon
