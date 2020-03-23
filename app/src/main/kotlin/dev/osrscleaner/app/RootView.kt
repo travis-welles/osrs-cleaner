@@ -1,6 +1,7 @@
 package dev.osrscleaner.app
 
 import com.github.thomasnield.rxkotlinfx.actionEvents
+import dev.osrscleaner.app.deob.DeobView
 import dev.osrscleaner.app.dialog.NewDeobProjectView
 import javafx.geometry.Pos
 import javafx.scene.layout.BorderPane
@@ -29,11 +30,6 @@ class RootView : View() {
      * The root content view
      */
     override val root = BorderPane()
-
-    /**
-     * Injected child views
-     */
-    private val newDeobProjectView: NewDeobProjectView by inject()
 
     init {
         title = "OSRS Cleaner"
@@ -74,7 +70,15 @@ class RootView : View() {
          * New Deob Project Subscriber
          */
         controller.newDeobProject.subscribe {
-            newDeobProjectView.openModal()
+            NewDeobProjectView().openModal()
+        }
+
+        /**
+         * Subscribe to deob view switch observable
+         */
+        controller.deobViewSwitch.subscribe {
+            this.replaceWith<DeobView>()
+            println("boom")
         }
     }
 }

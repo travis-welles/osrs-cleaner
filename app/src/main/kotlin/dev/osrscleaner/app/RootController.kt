@@ -18,5 +18,5 @@ class RootController : Controller() {
      * The unit observable which the menu entry action subscribes to
      */
     val newDeobProject = BehaviorSubject.create<Unit>()
-
+    val deobViewSwitch = BehaviorSubject.create<Unit>()
 }

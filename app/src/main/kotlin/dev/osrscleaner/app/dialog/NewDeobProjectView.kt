@@ -3,6 +3,8 @@ package dev.osrscleaner.app.dialog
 import com.github.thomasnield.rxkotlinfx.actionEvents
 import dev.osrscleaner.app.Main
 import dev.osrscleaner.app.ProjectModel
+import dev.osrscleaner.app.RootController
+import dev.osrscleaner.app.deob.DeobView
 import dev.osrscleaner.app.util.JarUtils
 import dev.osrscleaner.app.util.ProgressView
 import io.reactivex.rxkotlin.subscribeBy
@@ -46,6 +48,7 @@ class NewDeobProjectView : View("New Project") {
     private val finish = BehaviorSubject.create<Unit>()
 
     private val progressView: ProgressView by inject()
+    private val rootController: RootController by inject()
 
     /**
      * The root form.
@@ -110,8 +113,6 @@ class NewDeobProjectView : View("New Project") {
              */
             Main.loadedProject = projectModel
 
-            close()
-
             /**
              * Invoke the loading of the source JAR into the sourceGroup within the project model.
              */
@@ -123,6 +124,8 @@ class NewDeobProjectView : View("New Project") {
                     this,
                     "Loading Jar file classes..."
                 )
+            } success {
+                close()
             }
         }
 
